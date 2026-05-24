@@ -1,13 +1,10 @@
-# Step 5: Release
+# ステップ 5: リリースする
 
-With all our preparations ready, it's time to release them!
+準備が整いました。変更をリリースしましょう。
 
-## ⌨️ Activity: Merge our collaboration changes
+## アクティビティ: 共同作業のための変更をマージする
 
-1. In the top navigation, select the **Pull requests** tab.
-
-1. Find the pull request for the `prepare-to-collaborate` branch and merge it. You may need to wait for your new security scans to finish.
-
-1. Find the pull request for the `add-issue-templates` branch and merge it. You may need to wait for your new security scans to finish.
-
-1. With both pull requests merged, Mona will prepare the final review and acknowledge the exercise as finished! Nice work! You are all done! 🎉
+1. 上部ナビゲーションで **Pull requests** タブを選択します。
+1. `prepare-to-collaborate` ブランチの pull request を見つけてマージします。新しいセキュリティスキャンが終わるまで待つ必要があるかもしれません。
+1. `add-issue-templates` ブランチの pull request を見つけてマージします。こちらも新しいセキュリティスキャンが終わるまで待つ必要があるかもしれません。
+1. 両方の pull request をマージすると、Mona が最後の振り返りを準備し、演習の完了を確認します。お疲れさまでした。

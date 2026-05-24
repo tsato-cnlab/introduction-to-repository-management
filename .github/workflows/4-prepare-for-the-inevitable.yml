@@ -1,4 +1,4 @@
-name: Step 4
+name: ステップ 4
 
 on:
   push:
@@ -20,8 +20,10 @@ jobs:
   find_exercise:
     if: |
       !github.event.repository.is_template
-    name: Find Exercise Issue
-    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.6.0
+    name: 演習 Issue を検索
+    uses: ./.github/workflows/ja-find-exercise-issue.yml
+    with:
+      issue-title-text: "演習: リポジトリ管理入門"
 
   check_step_work:
     name: Check step work
@@ -34,18 +36,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Get Exercise Toolkit
-        uses: actions/checkout@v4
-        with:
-          repository: skills/exercise-toolkit
-          path: exercise-toolkit
-          # Results table still uses old format. Needs refactored to update.
-          ref: v0.3.0
-
       - name: Update comment - checking work
         run: |
           gh issue comment "$ISSUE_URL" \
-            --body-file exercise-toolkit/markdown-templates/step-feedback/checking-work.md \
+            --body-file .github/ja-templates/step-feedback/checking-work.md \
             --edit-last
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -116,7 +110,7 @@ jobs:
         id: build-message-step-results
         uses: skills/action-text-variables@v2
         with:
-          template-file: exercise-toolkit/markdown-templates/step-feedback/step-results.md
+          template-file: .github/ja-templates/step-feedback/step-results.md
           template-vars: >
             {
               "step_number": 4,
@@ -146,7 +140,7 @@ jobs:
         id: build-message-step-finish
         uses: skills/action-text-variables@v2
         with:
-          template-file: exercise-toolkit/markdown-templates/step-feedback/step-finished-prepare-next-step.md
+          template-file: .github/ja-templates/step-feedback/step-finished-prepare-next-step.md
           template-vars: |
             next_step_number: 5
 
@@ -159,7 +153,7 @@ jobs:
           ISSUE_BODY: ${{ steps.build-message-step-finish.outputs.updated-text }}
 
   post_next_step_content:
-    name: Post next step content
+    name: 次のステップを投稿
     needs: [find_exercise, check_step_work]
     runs-on: ubuntu-latest
     env:
@@ -168,13 +162,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Get Exercise Toolkit
-        uses: actions/checkout@v4
-        with:
-          repository: skills/exercise-toolkit
-          path: exercise-toolkit
-          ref: v0.6.0
 
       - name: Create comment - add step content
         run: |
@@ -186,13 +173,13 @@ jobs:
       - name: Create comment - watching for progress
         run: |
           gh issue comment "$ISSUE_URL" \
-            --body-file exercise-toolkit/markdown-templates/step-feedback/watching-for-progress.md
+            --body-file .github/ja-templates/step-feedback/watching-for-progress.md
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Disable current workflow and enable next one
         run: |
-          gh workflow disable "Step 4" || true
-          gh workflow enable "Step 5" || true
+          gh workflow disable "${{github.workflow}}" || true
+          gh workflow enable "5-merge.yml" || true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

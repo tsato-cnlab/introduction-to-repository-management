@@ -1,4 +1,4 @@
-name: Step 5
+name: ステップ 5
 
 on:
   pull_request:
@@ -23,8 +23,10 @@ jobs:
   find_exercise:
     if: |
       !github.event.repository.is_template
-    name: Find Exercise Issue
-    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.6.0
+    name: 演習 Issue を検索
+    uses: ./.github/workflows/ja-find-exercise-issue.yml
+    with:
+      issue-title-text: "演習: リポジトリ管理入門"
 
   check_step_work:
     name: Check step work
@@ -38,17 +40,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Get Exercise Toolkit
-        uses: actions/checkout@v4
-        with:
-          repository: skills/exercise-toolkit
-          path: exercise-toolkit
-          ref: v0.6.0
-
       - name: Update comment - checking work
         run: |
           gh issue comment "$ISSUE_URL" \
-            --body-file exercise-toolkit/markdown-templates/step-feedback/checking-work.md \
+            --body-file .github/ja-templates/step-feedback/checking-work.md \
             --edit-last
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -62,13 +57,13 @@ jobs:
       - name: Update comment - step finished - final review next
         run: |
           gh issue comment "$ISSUE_URL" \
-            --body-file exercise-toolkit/markdown-templates/step-feedback/lesson-review.md \
+            --body-file .github/ja-templates/step-feedback/lesson-review.md \
             --edit-last
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   post_review_content:
-    name: Post review content
+    name: 振り返りを投稿
     runs-on: ubuntu-latest
     needs: [find_exercise, check_step_work]
     env:
@@ -86,12 +81,12 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   finish_exercise:
-    name: Finish Exercise
+    name: 演習を完了
     needs: [find_exercise, post_review_content]
-    uses: skills/exercise-toolkit/.github/workflows/finish-exercise.yml@v0.9.3
+    uses: ./.github/workflows/ja-finish-exercise.yml
     with:
       issue-url: ${{ needs.find_exercise.outputs.issue-url }}
-      exercise-title: "Introduction to Repository Management"
+      exercise-title: "リポジトリ管理入門"
       update-readme-with-congratulations: false
 
   disable_workflow:

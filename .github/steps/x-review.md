@@ -1,29 +1,27 @@
-## Review
+## 振り返り
 
-_Congratulations, you've completed this exercise! You're all set for an awesome time collaborating with your fellow teachers!_
+_おめでとうございます。この演習は完了です。先生たちと安心して共同作業できる準備が整いました。_
 
 <img src="https://octodex.github.com/images/jetpacktocat.png" alt=celebrate width=150 align=right>
 
-You've successfully prepared Mergington High's extracurricular activities website for healthy and safe collaboration. Make sure you let the principal know so he can brag to the IT department about your proactive efforts!
+Mergington High の課外活動 Web サイトを、健全で安全な共同作業に向けて準備できました。校長先生にも、IT 部門へ誇らしく報告してもらいましょう。
 
-Here is a snippet of something you can share:
+共有できる成果の例:
 
-- Protected our code from accidental mistakes with `.gitignore` and branch protections.
-- Set clear guidelines for teacher contributions with `CONTRIBUTING.md` and `CODEOWNERS`.
-- Established community standards with a Code of Conduct and structured issue templates.
-- Prepared for the future security challenges by enabling automated scanning and providing safe submission procedures.
+- `.gitignore` とブランチ保護で、うっかりミスからコードを守った。
+- `CONTRIBUTING.md` と `CODEOWNERS` で、先生たちの貢献ルールを明確にした。
+- Code of Conduct と構造化された issue templates で、コミュニティ標準を整えた。
+- 自動スキャンと安全な報告手順を有効化し、将来のセキュリティ課題に備えた。
 
-### What's next?
+### 次に進むなら
 
-This exercise was meant to introduce you to many of the different areas of managing a repository. However, there is still more to learn!
-
-Here are some additional exercises for a deeper dive:
+この演習では、リポジトリ管理のさまざまな領域を紹介しました。さらに深く学ぶには、次の演習もおすすめです。
 
 - [Skills: Secure your repository supply chain](https://github.com/skills/secure-repository-supply-chain)
 - [Skills: Introduction to CodeQL](https://github.com/skills/introduction-to-codeql)
 - [Skills: Introduction to Secret Scanning](https://github.com/skills/introduction-to-secret-scanning)
 
-Here are some useful references from the [GitHub Docs](https://docs.github.com/en):
+GitHub Docs の参考資料:
 
 - [How to ignore files](https://docs.github.com/en/get-started/git-basics/ignoring-files)
 - [Template gitignore files](https://github.com/github/gitignore)

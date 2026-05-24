@@ -1,173 +1,108 @@
-# Step 1: Protect your code
+# ステップ 1: コードを保護する
 
-It's been a busy month at Mergington High! Your simple website for managing extra-curricular activities has really taken off. What started as a basic sign-up form for a few activities has grown into the go-to place for half the school activities. 📚✨
+Mergington High では、課外活動を管理するための小さな Web サイトが人気になりました。いくつかの活動向けの簡単な申し込みフォームから始まったものが、今では学校活動の多くで使われる場所になっています。
 
-Principal Martinez was so impressed with your work that they announced at the last staff meeting that ALL clubs should start using the website. While this is exciting, you're a bit nervous - the last thing you want is an accidental change breaking the system right before the big Fall Activities Fair! 😰
+校長の Martinez 先生はこの成果に感心し、すべてのクラブがこの Web サイトを使い始めるべきだと職員会議で発表しました。うれしい一方で、秋の活動フェア直前に誰かのうっかり変更でシステムが壊れるのは避けたいところです。
 
-When more teachers start helping with the Mergington High activities website, it's important to add some safeguards. Thankfully, GitHub provides several ways to protect your repository:
+ほかの先生たちも Web サイトの更新を手伝い始めるなら、安全策が必要です。GitHub にはリポジトリを守るための機能があります。
 
-1. **Repository Rulesets** - These provide safeguards to limit:
-
-   - Pushing code directly to important branches
-   - Deleting or renaming branches
-   - Force pushing (which can overwrite history)
-   - (and much more)
-
-1. **`.gitignore`** - This special file tells Git which files it should NOT track, like:
-
-   - Temporary files that your code creates while running
-   - Secret configuration files with sensitive information
-   - System files that other developers don't need
+1. **Repository Rulesets**: 重要なブランチへの直接 push、ブランチの削除や名前変更、履歴を上書きする force push などを制限できます。
+1. **`.gitignore`**: 実行時に生成される一時ファイル、秘密情報を含む設定ファイル、ほかの開発者に不要なシステムファイルなど、Git が追跡しないファイルを指定します。
 
 > [!TIP]
-> Think of these settings like the editorial process of a school yearbook. Various student committees will take photos and write articles, then the yearbook president will make adjustments to make sure everything flows together properly. Finally, a teacher/advisor will sign off that all content is appropriate.
+> これは学校の卒業アルバムの編集プロセスに似ています。各委員会が写真や記事を集め、編集長が全体の流れを整え、最後に先生が内容を確認します。
 
-## ⌨️ Activity: (optional) Get to know our extracurricular activities site
+## アクティビティ: 任意で課外活動サイトを確認する
 
 <details>
-<summary>Show Steps</summary>
+<summary>手順を表示</summary>
 
-In [Getting Started with GitHub Copilot](https://github.com/skills/getting-started-with-github-copilot/) exercise, we have been developing the Extracurricular activities website. You can follow these steps to start up the development environment and try it out.
+[Getting Started with GitHub Copilot](https://github.com/skills/getting-started-with-github-copilot/) の演習では、この課外活動 Web サイトを開発してきました。開発環境を起動して試すには、次の手順を使えます。
 
-> ❗ **Important:** Opening a development environment and running the application is **NOT** necessary to complete this exercise. You can skip this activity if desired.
+> **重要:** この演習を完了するために、開発環境を開いたりアプリを実行したりする必要はありません。必要なければスキップできます。
 
-1. Right-click the below button to open the **Create Codespace** page in a new tab. Use the default configuration.
+1. 次のボタンを右クリックし、**Create Codespace** ページを新しいタブで開きます。既定の設定を使います。
 
    [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/{{full_repo_name}}?quickstart=1)
 
-1. Wait some time for the environment to be prepared. It will automatically install all requirements and services.
+1. 環境の準備が終わるまで少し待ちます。必要なパッケージとサービスは自動でインストールされます。
 
-1. Validate the **GitHub Copilot** and **Python** extensions are installed and enabled.
+1. **GitHub Copilot** と **Python** 拡張機能がインストールされ、有効になっていることを確認します。
 
    <img width="300" alt="copilot extension for VS Code" src="https://github.com/user-attachments/assets/ef1ef984-17fc-4b20-a9a6-65a866def468" /><br/>
    <img width="300" alt="python extension for VS Code" src="https://github.com/user-attachments/assets/3040c0f5-1658-47e2-a439-20504a384f77" />
 
-1. Try running the application. In the left sidebar, select the **Run and Debug** tab and then press the **Start Debugging** icon.
+1. 左サイドバーで **Run and Debug** タブを選択し、**Start Debugging** アイコンを押してアプリを実行してみます。
 
-   <details>
-   <summary>📸 Show screenshot</summary><br/>
-
-   <img width="300" alt="run and debug" src="https://github.com/user-attachments/assets/50b27f2a-5eab-4827-9343-ab5bce62357e" />
-
-   </details>
-
-   <details>
-   <summary>🤷 Having trouble?</summary><br/>
-
-   If the **Run and Debug** area is empty, try reloading VS Code: Open the command palette (`Ctrl`+`Shift`+`P`) and search for `Developer: Reload Window`.
-
-   <img width="300" alt="empty run and debug panel" src="https://github.com/user-attachments/assets/0dbf1407-3a97-401a-a630-f462697082d6" />
-
-   </details>
-
-1. Use the **Ports** tab to find the webpage address, open it, and verify it is running.
-
-   <details>
-   <summary>📸 Show screenshot</summary><br/>
-
-   <img width="350" alt="ports tab" src="https://github.com/user-attachments/assets/8d24d6b5-202d-4109-8174-2f0d1e4d8d44" />
-
-   ![Screenshot of Mergington High School WebApp](https://github.com/user-attachments/assets/5e1e7c1e-1b0e-4378-a5af-a266763e6544)
-
-   </details>
+1. **Ports** タブで Web ページのアドレスを見つけ、開いて動作を確認します。
 
 </details>
 
-## ⌨️ Activity: Add a branch ruleset
+## アクティビティ: ブランチ ruleset を追加する
 
-To get started, let's add some protections so that no one accidentally breaks the club registration system.
+クラブ登録システムを誰かが誤って壊さないよう、まずは保護を追加します。
 
-1. If necessary, open another tab and navigate to this repository. We will start on the **Settings** tab.
-
-1. In the left navigation, expand the **Rules** area and select **Rulesets**.
-
-1. Click the **New ruleset** dropdown and select **New branch ruleset**.
-
-   <img width="250" alt="image" src="https://github.com/user-attachments/assets/1e9fd519-1421-4d6b-b654-a3fe53a8fb75" />
-
-1. Set the **Ruleset Name** as `Protect main` and change the **Enforcement status** to `Active`.
-
-   <img width="250" alt="image" src="https://github.com/user-attachments/assets/ce30fd34-39b5-4e22-b348-4af61fd05cd1" />
-
-1. Find the **Targets** section and use the **Add target** dropdown to add 2 entries:
-
-   1. Add the **Include default branch** option to ensure protections aren't bypassed by switching the default branch.
-
-      <img width="250" alt="image" src="https://github.com/user-attachments/assets/217263cc-d5c2-4ac0-b03c-a72494e5c812" />
-
-   1. Use the **include by pattern** option and enter the pattern `main`.
-
-      <img width="250" alt="image" src="https://github.com/user-attachments/assets/968c9ed8-b051-44eb-af42-d99670ad31fd" />
-
-      <img width="250" alt="image" src="https://github.com/user-attachments/assets/ddc52767-d93e-4c9e-a77a-90c3b5c08fb5" />
-
-1. Find the **Rules** section and ensure the following items are checked.
-
+1. 必要であれば別タブでこのリポジトリを開きます。**Settings** タブから始めます。
+1. 左ナビゲーションで **Rules** を展開し、**Rulesets** を選択します。
+1. **New ruleset** ドロップダウンをクリックし、**New branch ruleset** を選択します。
+1. **Ruleset Name** を `Protect main`、**Enforcement status** を `Active` にします。
+1. **Targets** セクションで **Add target** ドロップダウンを使い、次の 2 つを追加します。
+   1. **Include default branch**
+   1. **include by pattern** を選び、パターンに `main` を入力
+1. **Rules** セクションで次を有効にします。
    - [x] Restrict deletions
    - [x] Require a pull request before merging
      - Required approvals: `0`
      - [x] Require review from Code Owners
    - [x] Block force pushes
+1. 下までスクロールし、**Create** をクリックして ruleset を保存します。
 
-1. Scroll to the bottom and click the **Create** button to save the ruleset.
+## アクティビティ: `.gitignore` ファイルを作成する
 
-## ⌨️ Activity: Create a `.gitignore` file
+先生たちはさまざまなツールを使うので、不要なファイルを誤ってコミットしないようにします。
 
-We know many teachers use different tools, so let's make sure they don't accidentally commit unnecessary files.
-
-1. At the top navigation, return to the **Code** tab and verify you are on the `main` branch.
-
-1. Above the list of files, click the **Add file** dropdown and select **Create new file**.
-
-   <img width="300" alt="New file button" src="https://github.com/user-attachments/assets/8f3f8da8-1471-485a-9df5-8c03ecba2d8e"/>
-
-1. Enter the file name `.gitignore`. We will ignore the template selector for now and make our own. Copy the below example content into it.
-
-   <img width="350" alt="preview of new file" src="https://github.com/user-attachments/assets/580d1a63-a264-4d44-8901-50ad708b8822"/>
+1. 上部ナビゲーションで **Code** タブに戻り、`main` ブランチ上にいることを確認します。
+1. ファイル一覧の上にある **Add file** ドロップダウンをクリックし、**Create new file** を選択します。
+1. ファイル名に `.gitignore` と入力します。テンプレート選択は使わず、次の内容をコピーします。
 
    ```gitignore
    # Python backend for club management
    __pycache__/
-   *.py[cod]      # Python compiled files
+   *.py[cod]
    *$py.class
    *.so
    .Python
    env/
-   .env           # Where database passwords are stored
-   venv/          # Virtual environment for testing
+   .env
+   venv/
    .venv
 
    # Teacher IDE settings
-   .vscode/       # Ms. Rodriguez uses VS Code
-   .idea/         # Mr. Chen uses PyCharm
+   .vscode/
+   .idea/
 
    # Local development & testing
    instance/
    .pytest_cache/
-   .coverage      # Test coverage reports
+   .coverage
    htmlcov/
 
    # Staff computer files
-   .DS_Store      # For teachers with Macs
-   Thumbs.db      # For teachers with Windows
+   .DS_Store
+   Thumbs.db
    ```
 
-1. In the top right, select the **Commit changes...** button. Notice that it won't let us commit to the `main` branch! Our ruleset is working! Nice!
-
-   <img width="400" alt="image" src="https://github.com/user-attachments/assets/4e85948d-75c8-4c13-8ddd-4707bf9b0805" />
-
-1. Enter `prepare-to-collaborate` for the branch name then click the **Propose changes** button. You will be forwarded to a new page to start a new pull request.
-
-1. Set the title to `Prepare to collaborate` and click the **Create pull request** button. **Do NOT merge yet**, since we will be adding more collaboration related changes.
-
-1. With the file committed, wait a moment for Mona to check your work, provide feedback, and share the next lesson.
+1. 右上の **Commit changes...** を選択します。`main` ブランチへ直接コミットできないことに注目してください。ruleset が働いています。
+1. ブランチ名に `prepare-to-collaborate` と入力し、**Propose changes** をクリックします。新しい pull request を開始するページへ移動します。
+1. タイトルを `Prepare to collaborate` にして **Create pull request** をクリックします。共同作業に関する変更をさらに追加するため、**まだマージしないでください**。
+1. ファイルをコミットすると、Mona が作業を確認し、次のレッスンを投稿します。
 
 > [!TIP]
-> GitHub and the community have built a repository with [sample `.gitignore` files](https://github.com/github/gitignore) for many situations. Make sure to check it out!
+> GitHub とコミュニティは、多くの状況向けの [sample `.gitignore` files](https://github.com/github/gitignore) を用意しています。
 
 <details>
-<summary>🤷 Having trouble?</summary><br/>
+<summary>うまくいかない場合</summary><br/>
 
-Make sure you pushed the `.gitignore` file to `prepare-to-collaborate` branch. Exact naming for both matters!
+`.gitignore` を `prepare-to-collaborate` ブランチへ push していることを確認してください。ファイル名とブランチ名の両方が重要です。
 
 </details>
