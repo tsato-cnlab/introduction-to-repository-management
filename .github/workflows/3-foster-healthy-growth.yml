@@ -34,6 +34,9 @@ jobs:
       ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Checkout branch - prepare-to-collaborate
         uses: actions/checkout@v4
         continue-on-error: true
